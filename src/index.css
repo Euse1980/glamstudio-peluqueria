@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-pearl: #F9F8F6;
+    --ink-graphite: #111111;
+    --gold-champagne: #D4AF37;
+    --gold-rose: #C89D7C;
+    --status-emerald: #10B981;
+    --status-amber: #EAB308;
+    --status-crimson: #EF4444;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #F9F8F6;
+    color: #111111;
+    overflow-x: hidden;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  html.dark body {
+    background-color: #0E0E0E;
+    color: #F5F3EF;
+  }
+
+  h1, h2, h3, .font-serif-luxury {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+}
+
+/* Adaptación integral y elegante a Modo Oscuro (Obsidian & Champagne Gold) */
+html.dark .bg-\[\#F9F8F6\],
+html.dark .bg-\[\#F9F8F6\]\/90,
+html.dark .bg-\[\#F9F8F6\]\/95,
+html.dark .bg-\[\#F9F8F6\]\/60 {
+  background-color: #0E0E0E !important;
+}
+
+html.dark header.sticky {
+  background-color: rgba(14, 14, 14, 0.92) !important;
+  border-color: #262626 !important;
+}
+
+html.dark .bg-white,
+html.dark .bg-white\/95,
+html.dark .bg-white\/90 {
+  background-color: #171717 !important;
+  color: #F5F3EF !important;
+}
+
+html.dark .bg-stone-100,
+html.dark .bg-stone-100\/90,
+html.dark .bg-stone-200\/60,
+html.dark .bg-stone-200\/80,
+html.dark .bg-stone-50 {
+  background-color: #1F1F1F !important;
+  color: #E7E5E4 !important;
+}
+
+html.dark .text-\[\#111111\] {
+  color: #F5F3EF !important;
+}
+
+/* Mantener texto oscuro cuando está sobre botón Dorado Champagne o Verde Esmeralda */
+html.dark .bg-\[\#D4AF37\] .text-\[\#111111\],
+html.dark .bg-\[\#D4AF37\].text-\[\#111111\],
+html.dark .bg-\[\#10B981\].text-\[\#111111\] {
+  color: #111111 !important;
+}
+
+html.dark .text-stone-700,
+html.dark .text-stone-600 {
+  color: #D6D3D1 !important;
+}
+
+html.dark .text-stone-500,
+html.dark .text-stone-400 {
+  color: #A8A29E !important;
+}
+
+html.dark .text-\[\#8A6D1B\] {
+  color: #E5C158 !important;
+}
+
+html.dark .border-stone-200,
+html.dark .border-stone-200\/70,
+html.dark .border-stone-200\/80,
+html.dark .border-stone-200\/90,
+html.dark .border-stone-200\/60,
+html.dark .border-stone-300,
+html.dark .border-stone-100 {
+  border-color: #2A2A2A !important;
+}
+
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background-color: #1F1F1F !important;
+  color: #F5F3EF !important;
+  border-color: #333333 !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #78716C !important;
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F2EFE9;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #171717;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b59226;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.72; }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
