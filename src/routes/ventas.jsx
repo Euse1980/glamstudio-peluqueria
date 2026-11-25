@@ -317,8 +317,8 @@ export function VentasPOSPage() {
             <div
               key={cart.id}
               className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-t-xl border-t border-x text-xs font-bold transition ${isCurrent
-                  ? 'bg-[#111111] text-[#D4AF37] border-[#111111]'
-                  : 'bg-white text-stone-600 border-stone-200 hover:bg-stone-100'
+                ? 'bg-[#111111] text-[#D4AF37] border-[#111111]'
+                : 'bg-white text-stone-600 border-stone-200 hover:bg-stone-100'
                 }`}
             >
               <button
@@ -329,8 +329,8 @@ export function VentasPOSPage() {
                 <span>{cart.label}</span>
                 <span
                   className={`px-1.5 py-0.2 rounded-full text-[10px] ${isCurrent
-                      ? 'bg-[#D4AF37] text-[#111111]'
-                      : 'bg-stone-200 text-stone-700'
+                    ? 'bg-[#D4AF37] text-[#111111]'
+                    : 'bg-stone-200 text-stone-700'
                     }`}
                 >
                   {itemCount}
@@ -362,8 +362,8 @@ export function VentasPOSPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Catálogo de Servicios + Productos de Reventa */}
         <div className="lg:col-span-7 bg-white rounded-2xl border border-stone-200 p-5 space-y-4 shadow-xs">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-1.5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center gap-1.5">
               {[
                 { id: 'combined', label: 'Servicios + Reventa' },
                 { id: 'services', label: 'Solo Servicios' },
@@ -374,8 +374,8 @@ export function VentasPOSPage() {
                   type="button"
                   onClick={() => setPosCatalogTab(t.id)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${posCatalogTab === t.id
-                      ? 'bg-[#111111] text-[#D4AF37]'
-                      : 'bg-[#F9F8F6] text-stone-600 hover:bg-stone-200'
+                    ? 'bg-[#111111] text-[#D4AF37]'
+                    : 'bg-[#F9F8F6] text-stone-600 hover:bg-stone-200'
                     }`}
                 >
                   {t.label}
@@ -388,7 +388,7 @@ export function VentasPOSPage() {
               value={searchPos}
               onChange={(e) => setSearchPos(e.target.value)}
               placeholder="Filtrar servicio o producto..."
-              className="px-3 py-1.5 rounded-xl bg-[#F9F8F6] border border-stone-200 text-xs focus:outline-none focus:border-[#D4AF37]"
+              className="w-full sm:w-56 px-3 py-1.5 rounded-xl bg-[#F9F8F6] border border-stone-200 text-xs focus:outline-none focus:border-[#D4AF37]"
             />
           </div>
 
@@ -441,8 +441,8 @@ export function VentasPOSPage() {
                       disabled={out}
                       onClick={() => addItemToActiveCart({ ...prd, type: 'product' })}
                       className={`p-3 rounded-xl border text-left flex items-center justify-between gap-2 transition ${out
-                          ? 'border-red-200 bg-red-50/40 opacity-60 cursor-not-allowed'
-                          : 'border-stone-200 hover:border-[#D4AF37] bg-white hover:bg-[#D4AF37]/10 cursor-pointer'
+                        ? 'border-red-200 bg-red-50/40 opacity-60 cursor-not-allowed'
+                        : 'border-stone-200 hover:border-[#D4AF37] bg-white hover:bg-[#D4AF37]/10 cursor-pointer'
                         }`}
                     >
                       <div className="min-w-0">
@@ -451,10 +451,10 @@ export function VentasPOSPage() {
                         </p>
                         <span
                           className={`text-[10px] font-semibold ${out
-                              ? 'text-red-600'
-                              : prd.stock <= prd.minStock
-                                ? 'text-amber-700'
-                                : 'text-emerald-700'
+                            ? 'text-red-600'
+                            : prd.stock <= prd.minStock
+                              ? 'text-amber-700'
+                              : 'text-emerald-700'
                             }`}
                         >
                           {out ? 'Agotado (0 u.)' : `Stock disponible: ${prd.stock} u.`}
@@ -536,8 +536,8 @@ export function VentasPOSPage() {
                     <div>
                       <span
                         className={`inline-block px-2 py-0.2 rounded text-[9px] font-bold uppercase ${item.type === 'service'
-                            ? 'bg-[#111111] text-[#D4AF37]'
-                            : 'bg-emerald-500/15 text-emerald-800'
+                          ? 'bg-[#111111] text-[#D4AF37]'
+                          : 'bg-emerald-500/15 text-emerald-800'
                           }`}
                       >
                         {item.type === 'service' ? 'Servicio Salón' : 'Producto Reventa'}
@@ -551,17 +551,17 @@ export function VentasPOSPage() {
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between gap-2 pt-1 border-t border-stone-200/60">
+                  <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-stone-200/60">
                     {/* Selector de Estilista para liquidar comisión */}
-                    <div className="flex items-center gap-1 text-[11px]">
-                      <UserCheck className="w-3.5 h-3.5 text-[#D4AF37]" />
+                    <div className="flex items-center gap-1 text-[11px] min-w-0 flex-1">
+                      <UserCheck className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
                       <select
                         value={item.employeeId || 'emp-1'}
                         onChange={(e) => {
                           const emp = employees.find((x) => x.id === e.target.value)
                           if (emp) updateItemStylist(item.id, item.type, emp)
                         }}
-                        className="bg-white border border-stone-200 rounded px-1.5 py-0.5 text-[11px] font-medium"
+                        className="bg-white border border-stone-200 rounded px-1.5 py-0.5 text-[11px] font-medium max-w-full truncate"
                       >
                         {employees.map((emp) => (
                           <option key={emp.id} value={emp.id}>
@@ -681,8 +681,8 @@ export function VentasPOSPage() {
 
       {/* MODAL DE ARQUEO DE CAJA CON AUTOCOMPLETADO EN CEROS */}
       {isArqueoModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
-          <div className="bg-[#F9F8F6] border border-[#D4AF37] rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-3 sm:p-4 overflow-y-auto">
+          <div className="bg-[#F9F8F6] border border-[#D4AF37] rounded-2xl max-w-lg w-full max-h-[92vh] overflow-y-auto shadow-2xl my-auto">
             <div className="bg-[#111111] text-white px-6 py-4 flex items-center justify-between">
               <div>
                 <span className="text-[10px] uppercase tracking-widest text-[#D4AF37] font-bold">

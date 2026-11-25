@@ -205,8 +205,8 @@ export function SalonPage() {
             {role === 'ESTILISTA'
               ? `Vista de Estilista (${user?.name}): gestiona tus estados en bacha/corte y fórmulas de tintura.`
               : role === 'CONSULTA'
-              ? 'Vista de Cliente: sigue en tiempo real el avance de tu turno y disponibilidad de estaciones.'
-              : 'Control de Recepción & Dirección: asigna estaciones, monitorea tiempos y transfiere al POS en 1 clic.'}
+                ? 'Vista de Cliente: sigue en tiempo real el avance de tu turno y disponibilidad de estaciones.'
+                : 'Control de Recepción & Dirección: asigna estaciones, monitorea tiempos y transfiere al POS en 1 clic.'}
           </p>
         </div>
 
@@ -215,11 +215,10 @@ export function SalonPage() {
           <button
             type="button"
             onClick={() => setShowAllDates((v) => !v)}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold border transition cursor-pointer ${
-              showAllDates
+            className={`px-3.5 py-2 rounded-xl text-xs font-bold border transition cursor-pointer ${showAllDates
                 ? 'bg-[#111111] text-[#D4AF37] border-[#111111]'
                 : 'bg-white text-stone-700 border-stone-200 hover:border-[#D4AF37]'
-            }`}
+              }`}
           >
             {showAllDates ? 'Todas las fechas ✓' : 'Ver todas las fechas'}
           </button>
@@ -268,7 +267,7 @@ export function SalonPage() {
           return (
             <div
               key={col.id}
-              className="bg-stone-100/90 rounded-2xl border border-stone-200/90 p-3.5 flex flex-col gap-3 min-h-[540px]"
+              className="bg-stone-100/90 rounded-2xl border border-stone-200/90 p-3.5 flex flex-col gap-3 min-h-[220px] lg:min-h-[540px]"
             >
               {/* Header de Columna */}
               <div

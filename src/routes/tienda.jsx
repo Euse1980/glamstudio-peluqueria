@@ -366,10 +366,10 @@ export function TiendaPage() {
               Reserva online en segundos y elige a tu estilista.
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 pt-2">
               <Link
                 to="/reservas"
-                className="inline-flex items-center gap-2 h-12 px-6 rounded-full bg-[#D4AF37] text-[#111111] font-semibold text-sm hover:bg-[#c9a42f] transition"
+                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-[#D4AF37] text-[#111111] font-semibold text-sm hover:bg-[#c9a42f] transition"
               >
                 <Calendar className="w-4 h-4" />
                 Reservar turno online
@@ -379,14 +379,14 @@ export function TiendaPage() {
                 onClick={() =>
                   document.getElementById('catalogo')?.scrollIntoView({ behavior: 'smooth' })
                 }
-                className="inline-flex items-center gap-2 h-12 px-6 rounded-full border border-white/30 text-white font-medium text-sm hover:bg-white/10 transition cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full border border-white/30 text-white font-medium text-sm hover:bg-white/10 transition cursor-pointer"
               >
                 Ver servicios y productos
                 <ArrowRight className="w-4 h-4" />
               </button>
               <Link
                 to="/agenda"
-                className="inline-flex items-center gap-2 h-12 px-4 text-stone-300 font-medium text-sm hover:text-white transition"
+                className="inline-flex items-center justify-center gap-2 h-10 sm:h-12 px-4 text-stone-300 font-medium text-sm hover:text-white transition"
               >
                 Seguir mi turno
               </Link>
@@ -421,12 +421,12 @@ export function TiendaPage() {
           </div>
 
           {/* Tabs */}
-          <div className="inline-flex p-1 rounded-full bg-stone-200/60 self-start md:self-auto">
+          <div className="grid grid-cols-2 sm:inline-flex p-1 rounded-2xl sm:rounded-full bg-stone-200/60 w-full md:w-auto gap-1 sm:gap-0">
             {tabs.map((t) => (
               <button
                 key={t.id}
                 onClick={() => setTab(t.id)}
-                className={`px-4 h-9 rounded-full text-[13px] font-medium transition cursor-pointer whitespace-nowrap ${
+                className={`px-3 sm:px-4 h-9 rounded-xl sm:rounded-full text-[13px] font-medium transition cursor-pointer whitespace-nowrap ${
                   tab === t.id
                     ? 'bg-white text-[#111111] shadow-sm'
                     : 'text-stone-500 hover:text-[#111111]'
@@ -455,11 +455,11 @@ export function TiendaPage() {
               className="w-full h-10 pl-10 pr-4 rounded-xl bg-[#F9F8F6] border border-transparent text-sm focus:outline-none focus:border-[#D4AF37] focus:bg-white transition"
             />
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap sm:flex-nowrap items-center gap-2">
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="h-10 px-3 rounded-xl bg-[#F9F8F6] border border-transparent text-sm text-stone-700 focus:outline-none focus:border-[#D4AF37] cursor-pointer"
+              className="flex-1 min-w-[140px] sm:flex-initial h-10 px-3 rounded-xl bg-[#F9F8F6] border border-transparent text-sm text-stone-700 focus:outline-none focus:border-[#D4AF37] cursor-pointer"
             >
               {categories.map((c) => (
                 <option key={c} value={c}>
@@ -470,14 +470,14 @@ export function TiendaPage() {
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value)}
-              className="h-10 px-3 rounded-xl bg-[#F9F8F6] border border-transparent text-sm text-stone-700 focus:outline-none focus:border-[#D4AF37] cursor-pointer"
+              className="flex-1 min-w-[140px] sm:flex-initial h-10 px-3 rounded-xl bg-[#F9F8F6] border border-transparent text-sm text-stone-700 focus:outline-none focus:border-[#D4AF37] cursor-pointer"
             >
               <option value="relevance">Destacados</option>
               <option value="price-asc">Precio: menor a mayor</option>
               <option value="price-desc">Precio: mayor a menor</option>
               <option value="name">Nombre A–Z</option>
             </select>
-            <div className="inline-flex p-1 rounded-xl bg-[#F9F8F6]">
+            <div className="inline-flex p-1 rounded-xl bg-[#F9F8F6] shrink-0">
               {[
                 { id: 'grid', icon: LayoutGrid, label: 'Vista cuadrícula' },
                 { id: 'list', icon: List, label: 'Vista lista' },

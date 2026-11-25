@@ -412,8 +412,8 @@ export function AgendaPage() {
                 key={apt.id}
                 className="bg-white rounded-2xl border border-stone-200/90 p-5 shadow-xs hover:border-[#D4AF37]/60 transition flex flex-col lg:flex-row lg:items-center justify-between gap-5"
               >
-                <div className="flex items-start gap-4">
-                  <div className="px-3.5 py-2.5 rounded-xl bg-[#111111] text-[#D4AF37] text-center min-w-[92px]">
+                <div className="flex flex-col sm:flex-row items-start gap-4">
+                  <div className="px-3.5 py-2 sm:py-2.5 rounded-xl bg-[#111111] text-[#D4AF37] text-center w-full sm:w-auto sm:min-w-[92px] flex sm:block items-center justify-center gap-2">
                     <span className="block font-mono text-sm font-bold">
                       {apt.startTime}
                     </span>
@@ -569,8 +569,8 @@ function CustomerAppointmentCard({ apt }) {
       )}
 
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div className="flex items-start gap-4">
-          <div className="px-3.5 py-2.5 rounded-xl bg-[#111111] text-[#D4AF37] text-center min-w-[92px]">
+        <div className="flex flex-col sm:flex-row items-start gap-4">
+          <div className="px-3.5 py-2 sm:py-2.5 rounded-xl bg-[#111111] text-[#D4AF37] text-center w-full sm:w-auto sm:min-w-[92px] flex sm:block items-center justify-center gap-2">
             <span className="block font-mono text-sm font-bold">{apt.startTime}</span>
             <span className="block text-[10px] text-stone-400 font-mono">
               a {apt.endTime}

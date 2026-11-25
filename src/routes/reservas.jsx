@@ -283,11 +283,10 @@ export function ReservasPage() {
                     key={srv.id}
                     type="button"
                     onClick={() => setSelectedServiceId(srv.id)}
-                    className={`text-left p-3.5 rounded-xl border transition cursor-pointer flex flex-col justify-between gap-2 ${
-                      isSelected
+                    className={`text-left p-3.5 rounded-xl border transition cursor-pointer flex flex-col justify-between gap-2 ${isSelected
                         ? 'border-[#D4AF37] bg-[#D4AF37]/12 shadow-xs ring-1 ring-[#D4AF37]'
                         : 'border-stone-200 bg-[#F9F8F6]/60 hover:border-stone-300'
-                    }`}
+                      }`}
                   >
                     <div>
                       <div className="flex items-center justify-between gap-2">
@@ -337,11 +336,10 @@ export function ReservasPage() {
                     key={emp.id}
                     type="button"
                     onClick={() => setSelectedEmployeeId(emp.id)}
-                    className={`text-left p-3.5 rounded-xl border transition cursor-pointer flex items-center gap-3.5 ${
-                      isSelected
+                    className={`text-left p-3.5 rounded-xl border transition cursor-pointer flex items-center gap-3.5 ${isSelected
                         ? 'border-[#D4AF37] bg-[#D4AF37]/12 ring-1 ring-[#D4AF37]'
                         : 'border-stone-200 bg-[#F9F8F6]/60 hover:border-stone-300'
-                    }`}
+                      }`}
                   >
                     <img
                       src={emp.avatar}
@@ -390,7 +388,7 @@ export function ReservasPage() {
               </span>
             </div>
 
-            <div className="grid grid-cols-4 sm:grid-cols-5 gap-2.5">
+            <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-2.5">
               {TIME_SLOTS.map((slot) => {
                 const isBusy = isTimeSlotBusyForSelectedStylist(slot)
                 const isSelected = selectedTime === slot
@@ -399,15 +397,14 @@ export function ReservasPage() {
                     key={slot}
                     type="button"
                     onClick={() => setSelectedTime(slot)}
-                    className={`py-2.5 px-2 rounded-xl text-xs font-mono font-bold border transition cursor-pointer flex flex-col items-center justify-center gap-0.5 ${
-                      isSelected
+                    className={`py-2.5 px-2 rounded-xl text-xs font-mono font-bold border transition cursor-pointer flex flex-col items-center justify-center gap-0.5 ${isSelected
                         ? isBusy
                           ? 'bg-[#EF4444] text-white border-[#EF4444] shadow-md scale-105'
                           : 'bg-[#111111] text-[#D4AF37] border-[#D4AF37] shadow-md scale-105'
                         : isBusy
-                        ? 'bg-[#EF4444]/10 text-[#EF4444] border-[#EF4444]/30 hover:bg-[#EF4444]/20'
-                        : 'bg-[#10B981]/10 text-emerald-900 border-[#10B981]/30 hover:bg-[#10B981]/20'
-                    }`}
+                          ? 'bg-[#EF4444]/10 text-[#EF4444] border-[#EF4444]/30 hover:bg-[#EF4444]/20'
+                          : 'bg-[#10B981]/10 text-emerald-900 border-[#10B981]/30 hover:bg-[#10B981]/20'
+                      }`}
                   >
                     <span>{slot}</span>
                     <span className="text-[9px] font-sans uppercase tracking-tighter opacity-85">
@@ -593,10 +590,10 @@ export function ReservasPage() {
                     {slotEvaluation.sameStylistAlternatives.map((alt) => (
                       <div
                         key={alt.id}
-                        className="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 flex items-center justify-between gap-3 transition"
+                        className="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 transition"
                       >
                         <div>
-                          <div className="flex items-center gap-2">
+                          <div className="flex flex-wrap items-center gap-2">
                             <span className="font-mono text-sm font-bold text-[#10B981]">
                               {alt.startTime} - {alt.endTime} hs
                             </span>
@@ -612,7 +609,7 @@ export function ReservasPage() {
                         <button
                           type="button"
                           onClick={() => handleConfirmBooking(alt)}
-                          className="px-3.5 py-2 rounded-lg bg-[#D4AF37] hover:bg-[#e5c145] text-[#111111] text-xs font-bold uppercase tracking-wider shrink-0 transition cursor-pointer"
+                          className="w-full sm:w-auto px-3.5 py-2 rounded-lg bg-[#D4AF37] hover:bg-[#e5c145] text-[#111111] text-xs font-bold uppercase tracking-wider shrink-0 transition cursor-pointer"
                         >
                           Reservar 1-Clic
                         </button>
@@ -638,16 +635,16 @@ export function ReservasPage() {
                     {slotEvaluation.otherStylistAlternatives.map((alt) => (
                       <div
                         key={alt.id}
-                        className="p-3 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-between gap-3 transition"
+                        className="p-3 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/15 border border-emerald-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 transition"
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
                           <img
                             src={alt.employeeAvatar}
                             alt={alt.employeeName}
-                            className="w-9 h-9 rounded-full object-cover border border-[#10B981]"
+                            className="w-9 h-9 rounded-full object-cover border border-[#10B981] shrink-0"
                           />
                           <div className="min-w-0">
-                            <div className="flex items-center gap-1.5">
+                            <div className="flex flex-wrap items-center gap-1.5">
                               <span className="font-mono text-xs font-bold text-[#10B981]">
                                 {alt.startTime} - {alt.endTime} hs
                               </span>
@@ -667,7 +664,7 @@ export function ReservasPage() {
                         <button
                           type="button"
                           onClick={() => handleConfirmBooking(alt)}
-                          className="px-3.5 py-2 rounded-lg bg-[#10B981] hover:bg-emerald-400 text-[#111111] text-xs font-bold uppercase tracking-wider shrink-0 transition cursor-pointer"
+                          className="w-full sm:w-auto px-3.5 py-2 rounded-lg bg-[#10B981] hover:bg-emerald-400 text-[#111111] text-xs font-bold uppercase tracking-wider shrink-0 transition cursor-pointer"
                         >
                           Confirmar 1-Clic
                         </button>
