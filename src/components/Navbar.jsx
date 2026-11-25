@@ -39,12 +39,12 @@ const ROLE_SHORT = {
 
 function Logo() {
   return (
-    <Link to="/" className="flex items-center gap-2 sm:gap-2.5 shrink-0 group">
-      <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#111111] flex items-center justify-center text-[#D4AF37] ring-1 ring-[#D4AF37]/60 group-hover:ring-[#D4AF37] transition">
+    <Link to="/" className="flex items-center gap-1.5 sm:gap-2.5 shrink-0 group">
+      <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-[#111111] flex items-center justify-center text-[#D4AF37] ring-1 ring-[#D4AF37]/60 group-hover:ring-[#D4AF37] transition">
         <Scissors className="w-4 h-4" />
       </div>
       <div className="leading-none whitespace-nowrap">
-        <span className="font-serif-luxury text-[22px] sm:text-[26px] font-bold tracking-wide text-[#111111]">
+        <span className="font-serif-luxury text-[20px] sm:text-[26px] font-bold tracking-wide text-[#111111]">
           Glam<span className="text-[#D4AF37] italic font-medium">Studio</span>
         </span>
         <span className="block text-[8px] sm:text-[9px] uppercase tracking-[0.28em] text-stone-400 mt-0.5">
@@ -266,7 +266,7 @@ export function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-40 bg-[#F9F8F6]/90 backdrop-blur-lg border-b border-stone-200/70">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 h-[68px] sm:h-[72px] flex items-center justify-between gap-2 sm:gap-6">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 h-[68px] sm:h-[72px] flex items-center justify-between gap-1 sm:gap-6">
           <Logo />
 
           {/* Navegación desktop */}
@@ -306,7 +306,7 @@ export function Navbar() {
           </nav>
 
           {/* Acciones */}
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0">
             <button
               type="button"
               onClick={toggleDarkMode}
@@ -539,7 +539,7 @@ export function Navbar() {
             ) : (
               <button
                 onClick={openLogin}
-                className="inline-flex items-center gap-2 h-9 px-4 rounded-full border border-stone-300 text-[13px] font-medium text-[#111111] whitespace-nowrap hover:border-[#111111] transition cursor-pointer"
+                className="inline-flex items-center gap-2 h-9 px-2.5 sm:px-4 rounded-full border border-stone-300 text-[13px] font-medium text-[#111111] whitespace-nowrap hover:border-[#111111] transition cursor-pointer"
               >
                 <User className="w-4 h-4" />
                 <span className="hidden sm:inline">Ingresar</span>

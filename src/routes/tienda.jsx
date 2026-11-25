@@ -345,13 +345,13 @@ export function TiendaPage() {
         <img
           src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=2000&q=85"
           alt="Salón GlamStudio"
-          className="absolute inset-0 w-full h-full object-cover opacity-40"
+          className="block w-full h-auto object-contain md:absolute md:inset-0 md:h-full md:w-full md:opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#111111] via-[#111111]/80 to-[#111111]/20" />
+        <div className="absolute inset-0 hidden bg-gradient-to-r from-[#111111] via-[#111111]/80 to-[#111111]/20 md:block" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-20 lg:py-28">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-28">
           <div className="max-w-2xl space-y-6">
-            <span className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.25em] uppercase text-[#D4AF37]">
+            <span className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.16em] sm:tracking-[0.25em] uppercase text-[#D4AF37]">
               <span className="w-8 h-px bg-[#D4AF37]" />
               Peluquería & Estética Integral
             </span>
