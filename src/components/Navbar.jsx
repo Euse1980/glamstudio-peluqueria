@@ -79,6 +79,18 @@ export function Navbar() {
   } = useCart()
   const isStaff = isAuthenticated && (role === 'ADMINISTRADOR' || role === 'VENDEDOR')
   const [checkingOut, setCheckingOut] = useState(false)
+  const [pendingCartAction, setPendingCartAction] = useState(null)
+
+  const confirmCartAction = () => {
+    if (pendingCartAction?.type === 'remove') {
+      removeFromShop(pendingCartAction.item.id)
+      toast.success(`${pendingCartAction.item.name} eliminado del carrito`)
+    } else if (pendingCartAction?.type === 'clear') {
+      clearShop()
+      toast.success('Carrito vaciado')
+    }
+    setPendingCartAction(null)
+  }
 
   const handleCheckout = async () => {
     if (!isAuthenticated) {
@@ -602,6 +614,15 @@ export function Navbar() {
                   ({shopCount})
                 </span>
               </h3>
+              {shopItems.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => setPendingCartAction({ type: 'clear' })}
+                  className="mr-auto ml-3 text-xs font-medium text-red-600 hover:text-red-700 underline underline-offset-2 cursor-pointer"
+                >
+                  Vaciar carrito
+                </button>
+              )}
               <button
                 onClick={() => setIsShopOpen(false)}
                 className="w-8 h-8 rounded-full flex items-center justify-center text-stone-400 hover:text-[#111111] hover:bg-stone-100 cursor-pointer"
@@ -625,7 +646,7 @@ export function Navbar() {
                   onClick={() => setIsShopOpen(false)}
                   className="mt-5 inline-flex items-center h-10 px-5 rounded-full bg-[#111111] text-white text-sm font-medium"
                 >
-                  Ver productos
+                  Seguir comprando
                 </Link>
               </div>
             ) : (
@@ -674,9 +695,11 @@ export function Navbar() {
                         </div>
                       </div>
                       <button
-                        onClick={() => removeFromShop(item.id)}
+                        onClick={() =>
+                          setPendingCartAction({ type: 'remove', item })
+                        }
                         className="self-start p-1 text-stone-300 hover:text-red-500 cursor-pointer"
-                        aria-label="Eliminar"
+                        aria-label={`Eliminar ${item.name}`}
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -703,10 +726,73 @@ export function Navbar() {
                       ? 'Finalizar compra'
                       : 'Iniciar sesión para comprar'}
                   </button>
+                  <Link
+                    to="/tienda"
+                    onClick={() => setIsShopOpen(false)}
+                    className="w-full h-10 rounded-xl border border-stone-200 text-stone-700 text-sm font-medium hover:border-stone-400 transition flex items-center justify-center"
+                  >
+                    Seguir comprando
+                  </Link>
                 </div>
               </>
             )}
           </aside>
+        </div>
+      )}
+
+      {pendingCartAction && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+          onMouseDown={(e) => {
+            if (e.target === e.currentTarget) setPendingCartAction(null)
+          }}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="cart-confirmation-title"
+            className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl"
+          >
+            <h2
+              id="cart-confirmation-title"
+              className="font-serif-luxury text-2xl font-bold text-[#111111]"
+            >
+              {pendingCartAction.type === 'clear'
+                ? '¿Vaciar el carrito?'
+                : '¿Eliminar este producto?'}
+            </h2>
+            <p className="mt-2 text-sm text-stone-600">
+              {pendingCartAction.type === 'clear' ? (
+                `Se eliminarán ${shopItems.length} ${
+                  shopItems.length === 1 ? 'producto' : 'productos'
+                } del carrito. Esta acción no se puede deshacer.`
+              ) : (
+                <>
+                  ¿Estás seguro de eliminar{' '}
+                  <strong className="text-[#111111]">
+                    {pendingCartAction.item.name}
+                  </strong>{' '}
+                  del carrito?
+                </>
+              )}
+            </p>
+            <div className="mt-6 flex justify-end gap-3">
+              <button
+                type="button"
+                onClick={() => setPendingCartAction(null)}
+                className="h-10 rounded-lg border border-stone-200 px-4 text-sm font-medium text-stone-700 hover:bg-stone-50 cursor-pointer"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                onClick={confirmCartAction}
+                className="h-10 rounded-lg bg-red-600 px-4 text-sm font-semibold text-white hover:bg-red-700 cursor-pointer"
+              >
+                {pendingCartAction.type === 'clear' ? 'Sí, vaciar' : 'Sí, eliminar'}
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
